@@ -1,10 +1,10 @@
-const webpack = require('webpack')
-const path = require('path')
-const extractTextWebpackPlugin = require('extract-text-webpack-plugin')
-const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
-let config = {
+const config = {
   entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -20,15 +20,15 @@ let config = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
-      ]
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader' // compiles Sass to CSS, using Node Sass by default
+        ]
       }
     ]
   },
   plugins: [
-    new extractTextWebpackPlugin('styles.css'),
+    new extractTextWebpackPlugin('styles.css')
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
@@ -37,13 +37,13 @@ let config = {
     open: true
   },
   devtool: 'eval-source-maps'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     new uglifyJsPlugin(),
     new optimizeCssAssetsWebpackPlugin()
-  )
+  );
 }
 
 module.exports = config;
