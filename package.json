@@ -5,12 +5,16 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server -d --hot --config webpack.config.js --watch",
-    "production": "NODE_ENV=production webpack"
+    "production": "NODE_ENV=production webpack",
+    "lint": "eslint --ext .js src/"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/nicknameDE/es6-sass-webpack-boilerplate.git"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "author": "Nick <nickname.de@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -27,7 +31,12 @@
     "style-loader": "^0.17.0",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "pre-commit": "^1.2.2"
   },
   "bugs": {
     "url": "https://gitlab.com/nicknameDE/es6-sass-webpack-boilerplate/issues"
